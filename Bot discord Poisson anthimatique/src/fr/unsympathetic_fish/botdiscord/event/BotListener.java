@@ -11,10 +11,7 @@ import net.dv8tion.jda.core.entities.impl.UserImpl;
 import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberNickChangeEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
 
 
@@ -51,10 +48,7 @@ public class BotListener implements EventListener {
 		}
 	}
 	
-	
-	private LocalTime LocalDateTime() {
-		return null;
-	}
+
 	
 	private void onGuildMemberJoin(GuildMemberJoinEvent event) {
 	event.getGuild().getDefaultChannel().sendMessage("Bienvenue à toi, " + event.getUser().getAsMention()+" ! Moi, c'est Poisson antipathique et je vais te casser les couolles !").queue();

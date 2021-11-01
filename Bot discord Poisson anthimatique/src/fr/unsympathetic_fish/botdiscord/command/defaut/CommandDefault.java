@@ -1,9 +1,6 @@
 package fr.unsympathetic_fish.botdiscord.command.defaut;
 
 import java.awt.Color;
-import java.io.*;
-import java.time.LocalTime;
-import java.util.List;
 
 //import javax.naming.Name;
 
@@ -15,14 +12,10 @@ import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.entities.impl.UserImpl;
-import net.dv8tion.jda.core.managers.GuildController;
-
 
 public class CommandDefault {
 
@@ -73,8 +66,6 @@ public class CommandDefault {
 			e.printStackTrace();
 			return;
 		}
-
-		StringBuilder builder = new StringBuilder();
 		for(int i = 0; i < 20; i++){
 			channel.sendMessage(target1.getAsMention() + " réveille toi connard !").queue();
 		}

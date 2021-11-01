@@ -1,12 +1,10 @@
 package fr.unsympathetic_fish.botdiscord.command.defaut;
 
 import java.awt.Color;
-import java.time.LocalTime;
 
 import fr.unsympathetic_fish.botdiscord.command.Command;
 import fr.unsympathetic_fish.botdiscord.command.Command.ExecutorType;
 import fr.unsympathetic_fish.botdiscord.command.CommandMap;
-//import fr.furryfr.botdiscord.command.SimpleCommand;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.MessageChannel;
