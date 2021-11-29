@@ -9,13 +9,17 @@ import fr.unsympathetic_fish.botdiscord.command.Command;
 import fr.unsympathetic_fish.botdiscord.command.Command.ExecutorType;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.impl.UserImpl;
+import net.dv8tion.jda.core.entities.impl.*;
 
 public class CommandDefault {
 
@@ -56,6 +60,38 @@ public class CommandDefault {
 		jda.getPresence().setGame(Game.playing(builder.toString()));
 	}
 	
+	@Command(name="spam", description="Amusez vous à changer le jeu du bot")
+	private void spam(User user, MessageChannel channel, JDA jda, Guild guild,Message message) {
+		
+		User target1;
+		try {
+		  target1 = message.getMentionedMembers().get(0).getUser();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		long nb;
+		String nbTxt = null;
+		try{
+			nbTxt = message.getContentDisplay().substring(message.getContentDisplay().lastIndexOf(" "), message.getContentDisplay().length());
+			nbTxt = nbTxt.trim();
+			nb = Long.parseLong(nbTxt);
+		}
+		catch(NumberFormatException nfe){
+			System.out.println(nbTxt);
+			channel.sendMessage("C'est pas un nombre : (" + nbTxt + ")").queue();
+//			channel.sendMessage("Ou alors le chiffre est trop grand").queue();
+			return;
+		}
+		
+		for(int i = 0; i < nb; i++){
+			channel.sendMessage(target1.getAsMention() + " réveille toi connard !").queue();
+		}
+
+	}
+	
+	private static final MessageChannel PrivateChannel = null;
 	@Command(name="wakeup", description="Amusez vous à changer le jeu du bot")
 	private void wakeup(User user, MessageChannel channel, JDA jda, Guild guild,Message message) {
 		
@@ -66,14 +102,27 @@ public class CommandDefault {
 			e.printStackTrace();
 			return;
 		}
-		for(int i = 0; i < 20; i++){
-			channel.sendMessage(target1.getAsMention() + " réveille toi connard !").queue();
+		
+		if(channel!=PrivateChannel) {
+			if(((Member) target1).getOnlineStatus().toString)) {
+				channel.sendMessage(target1.getAsMention() + " réveille toi connard !").queue();
+			}
+			else {
+				channel.sendMessage(target1.getAsMention() + " on te parle je vois que tes connecté !!!").queue();
+			}
 		}
+		
+		
 
 	}
-	
+
 	@Command(name="42", description="Amusez vous à changer le jeu du bot")
 	private void my42(User user, MessageChannel channel, JDA jda, Guild guild,Message message) {
 		channel.sendMessage("https://media.discordapp.net/attachments/894496944917999631/895401160545042512/fuck5.gif").queue();
+	}
+	
+	@Command(name="wap", description="Amusez vous à changer le jeu du bot")
+	private void wap(User user, MessageChannel channel, JDA jda, Guild guild,Message message) {
+		channel.sendMessage("https://cdn.discordapp.com/attachments/378648464990666752/906262658540519424/v09044g40000c3ee205gt1bjj47f4hkg.mov").queue();
 	}
 }

@@ -12,6 +12,7 @@ import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.user.UserOnlineStatusUpdateEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
 
 
@@ -31,7 +32,7 @@ public class BotListener implements EventListener {
 		if(event instanceof MessageReceivedEvent) OnMessage((MessageReceivedEvent)event); // Normallement onMessage *
 		else if(event instanceof GuildMemberJoinEvent) onGuildMemberJoin((GuildMemberJoinEvent) event);
 		else if(event instanceof GuildMemberLeaveEvent) onGuildMemberLeave((GuildMemberLeaveEvent) event);
-		
+		else if(event instanceof UserOnlineStatusUpdateEvent) onGuildMemberConect((UserOnlineStatusUpdateEvent) event);
 	}
 
 	private void OnMessage(MessageReceivedEvent event) {
@@ -62,6 +63,10 @@ public class BotListener implements EventListener {
     ((UserImpl)event.getUser()).getPrivateChannel().sendMessage(builder.build()).queue();
 	
 	
+	}
+	
+	private void onGuildMemberConect(UserOnlineStatusUpdateEvent event) {
+		event.getJDA().getGuildById("894496944917999626").getTextChannelById("904695303159021619").sendMessage(" - " + event.getUser() + " : " + event.getCurrentOnlineStatus()  ).queue();
 	}
 	
 	private void onGuildMemberLeave(GuildMemberLeaveEvent event) {
