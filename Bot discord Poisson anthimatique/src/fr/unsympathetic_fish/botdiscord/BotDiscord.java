@@ -23,10 +23,10 @@ public class BotDiscord implements Runnable{
 	private boolean running;
 
 	public BotDiscord() throws LoginException, IllegalArgumentException, RateLimitedException {
-		jda = new JDABuilder(AccountType.BOT).setToken("OTA0NDE5NTI0MTQzNjExOTY1.YX7QUQ.Nm-SgcuI6Tg1eQLPlInx-exJL7A").buildAsync();
+		jda = new JDABuilder(AccountType.BOT).setToken("OT$********************************-exJL7A").buildAsync();
 		jda.addEventListener(new BotListener(commandMap)); 
 		System.out.println("Bot Poisson antipathique is now connected");
-		jda.getPresence().setGame(Game.playing("sucer Léandre"));
+		jda.getPresence().setGame(Game.playing("sucer LÃ©andre"));
 	}
 	
 	public JDA getJda() {
